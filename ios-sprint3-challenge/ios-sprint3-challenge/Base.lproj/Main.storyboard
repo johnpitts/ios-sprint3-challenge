@@ -13,7 +13,7 @@
         <!--POKEDEX-->
         <scene sceneID="3UE-I6-2sy">
             <objects>
-                <tableViewController id="HGn-3z-jZx" sceneMemberID="viewController">
+                <tableViewController id="HGn-3z-jZx" customClass="PokemonTableViewController" customModule="ios_sprint3_challenge" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="11a-w3-ylb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
