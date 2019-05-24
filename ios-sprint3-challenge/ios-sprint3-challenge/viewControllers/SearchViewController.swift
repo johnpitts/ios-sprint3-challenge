@@ -13,10 +13,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         searchBar.delegate = self
-
-        // Do any additional setup after loading the view.
     }
 
     
@@ -51,6 +48,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
      */
     
     override func viewWillAppear(_ animated: Bool) {
+        
         updateViews()
     }
     
@@ -66,25 +64,25 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
-        print("search bar activated")  // tested SAT, the problem is this error... Error decoding PersonSearch from data: keyNotFound(CodingKeys(stringValue: "abilities", intValue: nil),
+        print("search bar activated")
         
         guard let searchTerm = searchBar.text?.lowercased() else { return }
         
         pokemonController.searchForPokemon(with: searchTerm) {
             
-            DispatchQueue.main.async { // update
+            DispatchQueue.main.async {
+                
                 self.updateViews()
                 
                 //self.tableView.reloadData() happens automatically if i go back to it, right?
             }
-            
         }
     }
     
     func updateViews() {
         
         // this is a potential problem area, bc you're reloading pokemonController.pokemon instead of using what the SEGUE gave you for pokemon.  BUT, you also need to load pokemonController if you arrived here from the OTHER segue, namely the search segue.  so you're ending up with the LAST pokemon all the time bc here you're loading from pokemonController instead of the indexPath'd pokemon from your detail-segue.  an if-statement could cure this, but can you use segue indentifier in this viewController?
-        guard let pokemon = /*pokemonController.*/pokemon else {return}
+        guard let pokemon = pokemonController.pokemon else {return}
         
         nameLabel.text = pokemon.name
         idLabel.text = String(pokemon.id)
