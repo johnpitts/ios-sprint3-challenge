@@ -36,7 +36,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="fKg-P0-NdQ" kind="show" identifier="DetailSegue" id="VkO-az-AZa"/>
+                                    <segue destination="fKg-P0-NdQ" kind="show" identifier="PokemonDetail" id="VkO-az-AZa"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
