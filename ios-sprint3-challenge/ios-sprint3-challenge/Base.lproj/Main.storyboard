@@ -48,6 +48,7 @@
                     <navigationItem key="navigationItem" title="POKEDEX" id="I0I-f9-JrC">
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="6zO-y2-JXq">
                             <connections>
+                                <action selector="gotoSearchButtonTapped:" destination="HGn-3z-jZx" id="CDY-RQ-xnB"/>
                                 <segue destination="fKg-P0-NdQ" kind="show" identifier="SearchSegue" id="2ti-WT-ohm"/>
                             </connections>
                         </barButtonItem>
@@ -57,10 +58,10 @@
             </objects>
             <point key="canvasLocation" x="858" y="127"/>
         </scene>
-        <!--View Controller-->
+        <!--Search View Controller-->
         <scene sceneID="sSV-gL-AKp">
             <objects>
-                <viewController id="fKg-P0-NdQ" sceneMemberID="viewController">
+                <viewController id="fKg-P0-NdQ" customClass="SearchViewController" customModule="ios_sprint3_challenge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1JP-A5-dnu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -93,16 +94,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="IQh-68-tFb">
-                                        <rect key="frame" x="0.0" y="54.5" width="96.5" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="54.5" width="87" height="20.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activities:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Crm-tV-2wj">
-                                                <rect key="frame" x="0.0" y="0.0" width="74.5" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Abilities:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Crm-tV-2wj">
+                                                <rect key="frame" x="0.0" y="0.0" width="65" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=",,," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z8K-I5-i8v">
-                                                <rect key="frame" x="82.5" y="0.0" width="14" height="20.5"/>
+                                                <rect key="frame" x="73" y="0.0" width="14" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -141,6 +142,9 @@
                                         <rect key="frame" x="0.0" y="0.0" width="124" height="47.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                         <state key="normal" title="Save Pokemon"/>
+                                        <connections>
+                                            <action selector="savePokemonButtonPressed:" destination="fKg-P0-NdQ" eventType="touchUpInside" id="Ogh-XX-pJb"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="___" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ekV-y4-HXt">
                                         <rect key="frame" x="44.5" y="63.5" width="35" height="32.5"/>
@@ -169,6 +173,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="y2e-fA-DbH"/>
                     </view>
+                    <connections>
+                        <outlet property="abilitiesLabel" destination="z8K-I5-i8v" id="Nbh-aF-dYy"/>
+                        <outlet property="idLabel" destination="phq-ni-5J8" id="N7Y-Js-AKr"/>
+                        <outlet property="imageView" destination="7Xf-d3-S9e" id="lCy-Ws-2UP"/>
+                        <outlet property="nameLabel" destination="ekV-y4-HXt" id="not-5a-oHJ"/>
+                        <outlet property="searchBar" destination="wmB-P0-4Zn" id="Ytc-Kz-75s"/>
+                        <outlet property="typeLabel" destination="Ulg-Qw-9GM" id="2pX-oV-VW3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dXp-La-UGv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

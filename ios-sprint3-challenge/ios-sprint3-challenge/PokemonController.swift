@@ -12,17 +12,9 @@ class PokemonController {
     
     func searchForPokemon(with searchTerm: String, completion: @escaping () -> Void) {
         
-        let searchURL = baseURL.appendingPathComponent(searchTerm) // trying this, I didn't append last time bc I thought the searchQueryItem took care of it
+        let searchURL = baseURL.appendingPathComponent(searchTerm)
         
         let urlComponents = URLComponents(url: searchURL, resolvingAgainstBaseURL: true)
-        
-        // line below is redundant
-        //let searchQueryItem = URLQueryItem(name: "pokemon", value: searchTerm) // was pokemon, try "search"
-        
-        // redundant
-        //urlComponents?.queryItems = [searchQueryItem]
-        
-        print(urlComponents?.url)
         
         guard let formattedURL = urlComponents?.url else {
             completion()
@@ -49,14 +41,9 @@ class PokemonController {
             
             do {
                 let decoder = JSONDecoder()
-                
-                
-                //give me an instance of Pokemon.self type from data, try =if data is there
                 let pokemon = try decoder.decode(Pokemon.self, from: data)
                 
                 self.pokemon = pokemon
-                // either DispatchQueue.main now to put into table view or do that in the tableview where this is called
-                // i think ity's safe inside the completion thread, so it will come out later ok?
                 
                 completion()
                 
@@ -66,15 +53,12 @@ class PokemonController {
             }
         }
         print("resume reached")
-        //        let dataString = String(data: data, encoding: .utf8)  well this thing didn't work
-        //        print(dataString)
-        
         dataTask.resume()
     }
     
     func savePokemonToArray(with pokemon: Pokemon) {
-        pokemons.append(pokemon)
         
+        pokemons.append(pokemon)
     }
     
     enum HTTPMethod: String {
@@ -84,7 +68,8 @@ class PokemonController {
         case delete = "DELETE"
     }
     var pokemons: [Pokemon] = []
+    
     let baseURL = URL(string: "https://pokeapi.co/api/v2/pokemon")!
     
-    var pokemon: Pokemon?
+    var pokemon: Pokemon?   //try commenting this out bc you already create pokemon above in line 44
 }
